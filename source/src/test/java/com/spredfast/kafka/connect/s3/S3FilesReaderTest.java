@@ -2,7 +2,6 @@ package com.spredfast.kafka.connect.s3;
 
 import static java.util.stream.Collectors.toList;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
@@ -28,16 +27,8 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Stream;
 
-import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.connect.data.Schema;
-import org.apache.kafka.connect.data.SchemaAndValue;
-import org.apache.kafka.connect.storage.Converter;
-import org.junit.Test;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.AmazonWebServiceClient;
-import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.GetObjectRequest;
@@ -53,6 +44,14 @@ import com.spredfast.kafka.connect.s3.source.S3Offset;
 import com.spredfast.kafka.connect.s3.source.S3Partition;
 import com.spredfast.kafka.connect.s3.source.S3SourceConfig;
 import com.spredfast.kafka.connect.s3.source.S3SourceRecord;
+
+import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.connect.data.Schema;
+import org.apache.kafka.connect.data.SchemaAndValue;
+import org.apache.kafka.connect.storage.Converter;
+import org.junit.Test;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 
 /**
  * Covers S3 and reading raw byte records. Closer to an integration test.

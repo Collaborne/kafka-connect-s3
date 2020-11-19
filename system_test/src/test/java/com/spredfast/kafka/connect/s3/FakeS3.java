@@ -3,7 +3,6 @@ package com.spredfast.kafka.connect.s3;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.attribute.FileAttribute;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;

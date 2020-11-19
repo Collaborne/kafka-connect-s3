@@ -3,7 +3,6 @@ package com.spredfast.kafka.connect.s3.json;
 import java.util.List;
 import java.util.Optional;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ChunksIndex {

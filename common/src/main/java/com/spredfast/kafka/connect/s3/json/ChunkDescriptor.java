@@ -1,6 +1,5 @@
 package com.spredfast.kafka.connect.s3.json;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ChunkDescriptor {

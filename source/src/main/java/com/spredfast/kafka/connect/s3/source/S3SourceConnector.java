@@ -3,20 +3,17 @@ package com.spredfast.kafka.connect.s3.source;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
+import com.spredfast.kafka.connect.s3.Constants;
+
 import org.apache.kafka.common.config.ConfigDef;
 import org.apache.kafka.connect.connector.Task;
 import org.apache.kafka.connect.source.SourceConnector;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import com.spredfast.kafka.connect.s3.Configure;
-import com.spredfast.kafka.connect.s3.Constants;
 
 public class S3SourceConnector extends SourceConnector {
 

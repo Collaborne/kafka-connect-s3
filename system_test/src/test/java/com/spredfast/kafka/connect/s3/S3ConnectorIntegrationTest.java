@@ -32,6 +32,23 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.S3ObjectSummary;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.base.Throwables;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.io.Files;
+import com.spotify.docker.client.DefaultDockerClient;
+import com.spotify.docker.client.exceptions.DockerCertificateException;
+import com.spredfast.kafka.connect.s3.json.ChunksIndex;
+import com.spredfast.kafka.connect.s3.sink.S3SinkConnector;
+import com.spredfast.kafka.connect.s3.sink.S3SinkTask;
+import com.spredfast.kafka.connect.s3.source.S3FilesReader;
+import com.spredfast.kafka.connect.s3.source.S3SourceConnector;
+import com.spredfast.kafka.connect.s3.source.S3SourceTask;
+import com.spredfast.kafka.test.KafkaIntegrationTests;
+
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
@@ -52,23 +69,6 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3Client;
-import com.amazonaws.services.s3.model.S3ObjectSummary;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.base.Throwables;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.io.Files;
-import com.spotify.docker.client.DefaultDockerClient;
-import com.spotify.docker.client.exceptions.DockerCertificateException;
-import com.spredfast.kafka.connect.s3.json.ChunksIndex;
-import com.spredfast.kafka.connect.s3.sink.S3SinkConnector;
-import com.spredfast.kafka.connect.s3.sink.S3SinkTask;
-import com.spredfast.kafka.connect.s3.source.S3FilesReader;
-import com.spredfast.kafka.connect.s3.source.S3SourceConnector;
-import com.spredfast.kafka.connect.s3.source.S3SourceTask;
-import com.spredfast.kafka.test.KafkaIntegrationTests;
 
 @Ignore("Doesn't seem to work on CircleCI 2.0 - I believe it has to do with the Docker Client not being compatible")
 public class S3ConnectorIntegrationTest {

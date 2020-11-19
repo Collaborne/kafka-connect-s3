@@ -7,7 +7,6 @@ import java.nio.ByteBuffer;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.connect.errors.DataException;
-import com.spredfast.kafka.connect.s3.RecordReader;
 
 /**
  * Helper for reading raw length encoded records from a chunk file. Not thread safe.

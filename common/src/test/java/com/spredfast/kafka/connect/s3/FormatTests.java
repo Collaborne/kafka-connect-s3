@@ -14,7 +14,6 @@ import java.util.stream.Stream;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.producer.ProducerRecord;
-import com.google.common.collect.ImmutableMap;
 
 public class FormatTests {
 
