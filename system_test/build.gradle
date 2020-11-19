@@ -1,17 +1,17 @@
 description = "Tests against real Kafka Connect"
 
 dependencies {
-	compile project(':sink')
-	compile project(':source')
+	implementation project(':sink')
+	implementation project(':source')
 
-	testCompile 'junit:junit:4.12'
-	testCompile 'org.mockito:mockito-all:1.9.5'
+	testImplementation 'junit:junit:4.12'
+	testImplementation 'org.mockito:mockito-all:1.9.5'
 
-	testCompile 'org.apache.kafka:connect-runtime:0.10.1.0'
-	testCompile 'org.apache.kafka:connect-json:0.10.1.0'
-	testCompile 'org.apache.kafka:kafka_2.11:0.10.1.0'
+	testImplementation 'org.apache.kafka:connect-runtime:0.10.1.0'
+	testImplementation 'org.apache.kafka:connect-json:0.10.1.0'
+	testImplementation 'org.apache.kafka:kafka_2.11:0.10.1.0'
 
-	testCompile 'com.netflix.curator:curator-test:1.2.6'
+	testImplementation 'com.netflix.curator:curator-test:1.2.6'
 
-	testCompile 'com.spotify:docker-client:6.0.0'
+	testImplementation 'com.spotify:docker-client:6.0.0'
 }

@@ -1,11 +1,11 @@
 description = ""
 
 dependencies {
-	compile project(':api')
-	compile 'org.apache.kafka:connect-api:0.10.1.0'
-	compile 'com.amazonaws:aws-java-sdk-s3:1.10.37'
+	api project(':api')
+	api 'org.apache.kafka:connect-api:0.10.1.0'
+	api 'com.amazonaws:aws-java-sdk-s3:1.10.37'
 
-	testCompile 'junit:junit:4.12'
-	testCompile 'org.mockito:mockito-all:1.9.5'
-	testCompile 'com.google.guava:guava:18.0'
+	testImplementation 'junit:junit:4.12'
+	testImplementation 'org.mockito:mockito-all:1.9.5'
+	testImplementation 'com.google.guava:guava:18.0'
 }
