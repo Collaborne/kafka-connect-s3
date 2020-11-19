@@ -10,3 +10,5 @@ out
 .classpath
 .settings/
 
+# Visual Studio Code
+.vscode/
