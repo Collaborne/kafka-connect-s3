@@ -4,3 +4,9 @@ local-*
 *.iml
 .gradle
 out
+
+# Eclipse-compatible settings
+.project
+.classpath
+.settings/
+
