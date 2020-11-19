@@ -92,8 +92,6 @@ public abstract class Configure {
 	 */
 	public static Metrics metrics(Map<String, String> props) {
 		return ofNullable(props.get("metrics.reporter"))
-			.map(className -> className.equals("datadog") ?
-				"com.spredfast.kafka.connect.s3.metrics.DatadogMetrics" : className)
 			.map(className -> Metrics.getByName(props.getOrDefault("metrics.reporter.name", ""),
 				clazz(className), subStringKeys("metrics.reporter", props)))
 			.orElse(Metrics.NOOP);
