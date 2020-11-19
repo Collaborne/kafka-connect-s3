@@ -5,6 +5,10 @@ local-*
 .gradle
 out
 
+# Outputs
+*.class
+*.jar
+
 # Eclipse-compatible settings
 .project
 .classpath
