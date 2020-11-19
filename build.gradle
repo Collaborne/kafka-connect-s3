@@ -18,10 +18,11 @@ apply plugin: 'io.codearte.nexus-staging'
 description = "kafka-connect-s3"
 
 allprojects  {
-    apply plugin: 'maven'
-    apply plugin: 'idea'
+	apply plugin: 'maven'
+	apply plugin: 'idea'
+	apply plugin: 'eclipse'
 
-    group = 'com.spredfast.kafka.connect.s3'
+	group = 'com.spredfast.kafka.connect.s3'
 	// circle only builds tags, so don't worry if it thinks it is dirty and strip the leading v
 	version = versionDetails().lastTag.replaceAll(/^v/,'').replaceAll(/\.dirty$/, '')
 
