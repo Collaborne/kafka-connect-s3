@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.nio.charset.Charset;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
@@ -35,6 +36,8 @@ import org.junit.Test;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 import com.amazonaws.AmazonServiceException;
+import com.amazonaws.AmazonWebServiceClient;
+import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.GetObjectRequest;
@@ -207,6 +210,7 @@ public class S3FilesReaderTest {
 	}
 
 	private List<String> whenTheRecordsAreRead(S3FilesReader reader) {
+		System.out.println(reader);
 		List<String> results = new ArrayList<>();
 		for (S3SourceRecord record : reader) {
 			results.add((record.key() == null ? "" : new String(record.key()) + "=") + new String(record.value()));
@@ -216,6 +220,15 @@ public class S3FilesReaderTest {
 
 	private AmazonS3 givenAMockS3Client(final Path dir) {
 		final AmazonS3 client = mock(AmazonS3Client.class);
+		// Explicitly initialize the requestHandler2s field, which is accessed by the protected final
+		// "beforeClientExecution" method.
+		try {
+			Field f = AmazonWebServiceClient.class.getDeclaredField("requestHandler2s");
+			f.setAccessible(true);
+			f.set(client, new ArrayList<>());
+		} catch (Exception e) {
+			throw new RuntimeException("Cannot configure AmazonS3Client mock", e);
+		}
 		when(client.listObjects(any(ListObjectsRequest.class))).thenAnswer(new Answer<ObjectListing>() {
 			@Override
 			public ObjectListing answer(InvocationOnMock invocationOnMock) throws Throwable {

@@ -2,7 +2,8 @@ description = ""
 
 dependencies {
 	api project(':api')
-	api 'com.amazonaws:aws-java-sdk-s3:1.10.37'
+	compile platform('com.amazonaws:aws-java-sdk-bom:1.11.428')
+	api 'com.amazonaws:aws-java-sdk-s3'
 
 	testImplementation 'junit:junit:4.12'
 	testImplementation 'org.mockito:mockito-all:1.9.5'
