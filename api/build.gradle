@@ -1,5 +1,5 @@
 description = ""
 
 dependencies {
-	api 'org.apache.kafka:connect-api:0.10.1.0'
+	api 'org.apache.kafka:connect-api:2.0.0'
 }
